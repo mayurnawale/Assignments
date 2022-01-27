@@ -1,0 +1,60 @@
+1)
+def fib_fast_one(in_num):
+    back_two,back_one,output = 0,1,0
+    for ele in range(in_num+1):
+        if ele > 1:
+            output = back_two+back_one
+            back_two = back_one
+            back_one = output
+    print(f'fib_fast_two({in_num}) ➞ {output}')
+fib_fast_one(5)
+fib_fast_one(10)
+fib_fast_one(20)
+fib_fast_one(50)
+
+2)
+def convert_to_hex(in_string):
+    out_string = []
+    for ele in in_string:
+        out_string.append(hex(ord(ele))[2:])
+    print(f'convert_to_hex({in_string}) ➞ {" ".join(out_string)}')
+convert_to_hex("hello world")
+convert_to_hex("Big Boi")
+convert_to_hex("Marty Poppinson")
+
+3)
+def uncensor(in_string,in_vowels):
+    window = 0
+    out_string = ''
+    for ele in in_string:
+        if ele == '*':
+            out_string += in_vowels[window]
+            window +=1
+        else:
+            out_string += ele
+    print(f'uncensor{in_string,in_vowels} ➞ {out_string}')
+uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo")
+uncensor("abcd", "")
+uncensor("*PP*RC*S*", "UEAE")
+
+4)
+import socket
+def get_domain(in_ip):
+    print(f'get_domain({in_ip}) ➞ {socket.gethostbyaddr(in_ip)} ➞ {socket.gethostbyaddr(in_ip)[0]}')
+get_domain("8.8.8.8")
+get_domain("8.8.4.4")
+
+5)
+def fact_of_fact(in_num):
+    def get_factorial(n):
+        if n == 1:
+            return 1
+        else:
+            return n*get_factorial(n-1)      
+    out_num = 1
+    for ele in range(1,in_num+1):
+        out_num *= get_factorial(ele)
+    print(f'fact_of_fact({in_num}) ➞ {out_num}')
+fact_of_fact(4)
+fact_of_fact(5)
+fact_of_fact(6)
