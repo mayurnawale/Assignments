@@ -1,0 +1,73 @@
+1)
+def vowel_links(in_string):
+    in_list = in_string.split(" ")
+    vowel_list = ['a','e','i','o','u']
+    end,start,output = False, False,False
+    for ele in range(len(in_list)):
+        temp = True if in_list[ele][-1] in vowel_list else False
+        start = True if in_list[ele][0] in vowel_list else False
+        if start == end == True:
+            output=True
+            break
+        end=temp
+    print(f'vowel_links({in_string}) ➞ {output}')
+vowel_links("a very large appliance")
+vowel_links("go to edabit")
+vowel_links("an open fire")
+vowel_links("a sudden applause")
+
+2)
+def first_before_second_find(in_string,in_first,in_second):
+    last_occur_first = in_string.rfind(in_first)
+    first_occur_second = in_string.find(in_second)
+    output = True if last_occur_first < first_occur_second else False
+    print(f'first_before_second_find({in_string}, {in_first}, {in_second}) ➞ {output}')
+first_before_second_find("a rabbit jumps joyfully", "a", "j")
+first_before_second_find("knaves knew about waterfalls", "k", "w")
+first_before_second_find("happy birthday", "a", "y")
+first_before_second_find("precarious kangaroos", "k", "a")
+
+3)
+def char_at_pos(in_list,mode):
+    out_list = []
+    for ele in range(len(in_list)):
+        if mode == 'even' and (ele+1)%2 == 0:
+            out_list.append(in_list[ele])
+        elif mode == 'odd' and (ele+1)%2 != 0:
+            out_list.append(in_list[ele])            
+    print(f'char_at_pos{in_list,mode} ➞ {out_list}')
+char_at_pos([2, 4, 6, 8, 10], "even")
+char_at_pos("EDABIT", "odd")
+char_at_pos(["A", "R", "B", "I", "T", "R", "A", "R", "I", "L", "Y"], "odd")
+
+4)
+def GCD(in_list):
+    small = min(in_list)
+    gcd = -1
+    for i in range(1, small+1):
+        output = []
+        for ele in in_list:
+            output.append(ele%i)
+        if len(set(output)) == 1 and list(set(output))[0] == 0:
+            gcd = i
+    print(f'GCD({in_list}) ➞ {gcd}')
+GCD([10, 20, 40])
+GCD([1, 2, 3, 100])
+GCD([1024, 192, 2048, 512])
+
+5)
+def palindrome_type(in_num):
+    output = None
+    if str(in_num) == str(in_num)[::-1] and str(bin(in_num)[2:]) == str(bin(in_num)[2:])[::-1]:
+        output = 'Decimal and binary.'
+    elif str(in_num) == str(in_num)[::-1] and str(bin(in_num)[2:]) != str(bin(in_num)[2:])[::-1]:
+        output = 'Decimal only.'
+    elif str(bin(in_num)[2:]) != str(bin(in_num)[2:])[::-1] and str(in_num) == str(in_num)[::-1]:
+        output = 'Binary only.'
+    else:
+        output = 'Neither!'
+    print(f'palindrome({in_num}) ➞ {output}')
+palindrome_type(1306031)
+palindrome_type(427787)
+palindrome_type(313)
+palindrome_type(934)
