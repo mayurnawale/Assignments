@@ -1,0 +1,11 @@
+1)
+SELECT SUBSTRING(FIRST_NAME,1,3) FROM Worker;
+
+2)
+#Approach 1
+SELECT LOCATE('a',FIRST_NAME) FROM Worker WHERE FIRST_NAME = 'Amitabh';
+#Approach 2
+SELECT POSITION('a' IN FIRST_NAME) FROM Worker WHERE FIRST_NAME = 'Amitabh';
+
+3)
+SELECT first_name, last_name, salary, department FROM Worker w WHERE salary = (SELECT MAX(salary) FROM Worker WHERE department = w.department).
