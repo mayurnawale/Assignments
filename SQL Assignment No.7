@@ -1,0 +1,16 @@
+1)
+SELECT * FROM Worker Where MOD(worker_id,2) = 1
+
+2)
+#Code to create a new table
+CREATE TABLE CloneWorker (
+    WORKER_ID INT NOT NULL AUTO INCREMENT PRIMARY KEY,
+    FIRST_NAME VARCHAR(50),
+    LAST_NAME VARCHAR(50),
+    SALARY INT,
+    DEPARTMENT VARCHAR(50),
+    JOINING_DATE DATETIME
+);
+
+#Code to clone content of a table to another table
+INSERT INTO CloneWorker SELECT * FROM Worker;
